@@ -1,0 +1,62 @@
+//This code can take an integer array and sort it out based on the requirement using functions 
+//Ascend or Descend
+#include <stdio.h>
+int n,arr[10],i,j,temp;
+char s;
+void sort_ascend(int *n)
+{
+    printf(" \n Enter all the %d numbers in the array \n",*n);
+    for (i=0;i<(*n);++i)
+        scanf("%d",&arr[i]);
+    for (i=0;i<(*n);++i)
+    {    
+        for(j=i+1;j<(*n);++j)
+        {
+            if(arr[i]>arr[j])
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    printf("The sorted order of %d numbers is ",*n);
+    for (i=0;i<(*n);++i)
+        printf("\n%d ",arr[i]);
+}
+void sort_descend(int *n)
+{
+    printf("\n Enter all the %d numbers in the array \n",*n);
+    for (i=0;i<(*n);++i)
+        scanf("%d",&arr[i]);
+    for (i=0;i<(*n);++i)
+    {    
+        for(j=i+1;j<(*n);++j)
+        {
+            if(arr[i]<arr[j])
+            {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    printf("The sorted order of %d numbers is ",*n);
+    for (i=0;i<(*n);++i)
+        printf("\n%d ",arr[i]);
+}
+int main()
+{
+    printf("Enter the number n (Max 10) ");
+    scanf("%d",&n);
+    printf("Ascend of Descend ");
+    scanf(" %c",&s);
+    printf("c=%c",s);
+    if(s=='A')
+        sort_ascend(&n);
+    else if (s=='D')
+        sort_descend(&n);
+    else 
+        printf("Wrong Command");
+    return 0;
+}
