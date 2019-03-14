@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *new;
+}*head;
+
+void addNodestoList(int n);
+void displayList();
+
+int main()
+{
+    int n;
+    printf("Enter the number of nodes you require ");
+    scanf("%d",&n);
+    addNodestoList(n);
+    printf("The linked list in an ordered manner is ");
+    displayList();
+    return 0;
+}
+
+addNodestoList(n)
+{
+    struct Node *main_node,*temp;
+    int i,num;
+    head = (struct Node *)malloc(sizeof(struct Node));
+    if(head == NULL)
+        printf("Sorry! Memory is not allocated to this");
+    else
+    {
+        printf("Enter the 1st number in the List ");
+        scanf("%d",&num);
+        head->data = num;
+        head->new = NULL;
+        temp=head;
+        for(i=1;i<n;i++)
+        {
+            main_node = (struct Node *)malloc(sizeof(struct Node));
+            if(main_node == NULL)
+                printf("Sorry! Memory is not allocated to this");
+            else
+            {
+                printf("Enter the %d number of your list ",i+1);
+                scanf("%d",&num);
+                main_node->data = num;
+                main_node->new = NULL;
+                temp->new = main_node;
+                temp=temp->new;
+            }
+            
+        }
+    }
+}
+
+displayList()
+{
+    struct Node *temp;
+    if(temp == NULL)
+        printf("The List is empty ");
+    else 
+    {
+        temp=head;
+        while(temp != NULL)
+        {
+            printf("%d ",temp->data);
+            temp=temp->new;
+        }
+    }
+}
