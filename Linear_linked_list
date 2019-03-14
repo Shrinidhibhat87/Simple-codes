@@ -69,3 +69,16 @@ displayList()
         }
     }
 }
+/* To Delete the head the following snippet must be added 
+void deletehead(struct Node** head);
+deletehead(&head);
+void deletehead(struct Node** new_head)
+{
+    if(*new_head != NULL)
+    {
+        struct Node *temp = (*new_head);
+        head=temp->new;
+        free(temp);
+    }
+}
+*/
