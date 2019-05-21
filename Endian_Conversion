@@ -1,0 +1,19 @@
+//C Code to convert Little endian to big endian and vice versa
+// This is by default run on a little endian machine
+
+
+#include <stdio.h>
+
+int main()
+{
+    int lit_endian = 0x12345678;
+    printf("The little endian format is: 0x%x \n",lit_endian);
+    printf("Converting to big endian: 0x%x",lit_to_big_endian(lit_endian));
+    return 0;
+}
+
+int lit_to_big_endian (unsigned int x)
+{
+    //return ((x<<24 & 0x000000ff) | (x<<8 & 0x0000ff00) | (x>>8 & 0x00ff0000) | (x>>24 & 0xff000000)); //For converting big_to_lit
+    return ((x>>24 & 0x000000ff) | (x>>8 & 0x0000ff00) | (x<<8 & 0x00ff0000) | (x<<24 & 0xff000000)); //Converting lit_to_big
+}
