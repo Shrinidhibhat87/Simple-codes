@@ -1,0 +1,37 @@
+//This code is the best method to find the second largest number in the array
+//Time complexity is O(n)
+#include <stdio.h>
+
+void secondlargest(int array[],int size)
+{
+    int first,second;
+    first = second = 0;
+    for(int j = 0;j<size;j++)
+    {
+        if(array[j]>first)
+        {
+            second = first;
+            first = array[j];
+        }
+        else if(array[j]>second && array[j]<first)
+        {
+            second = array[j];
+        }
+    }
+    printf("The second largest number in the array is %d",second);
+}
+
+int main()
+{
+    int arr[10];
+    int size;
+    printf("Enter the number of elements in the array (<10)\n");
+    scanf("%d",&size);
+    for(int i = 0;i<size;i++)
+    {
+        printf("Enter the element %d of the array\n",i+1);
+        scanf("%d",&arr[i]);
+    }
+    secondlargest(arr,size);
+    return 0;
+}
