@@ -1,0 +1,66 @@
+//This code is to check if Array B is a subset of Array A
+
+#include <stdio.h>
+#include <stdbool.h>
+#define Max 15
+
+void printarray(int array[],int size)
+{
+    int i;
+    printf("\nThe array looks like this: \n");
+    for(i=0 ; i<size ; i++)
+    {
+        printf("%d ",array[i]);
+    }
+}
+
+bool check_subset(int array1[], int array2[], int size1, int size2)
+{
+    int i,j;
+    for(i=0; i<size1; i++)
+    {
+        for(j=0; j<size2; j++)
+        {
+            if(array1[i] == array2[j])
+            {
+                return 1;
+                break;
+            }
+        }
+    }
+    return 0;
+}
+
+int main()
+{
+    int array_1[Max], array_2[Max];
+    int size_1, size_2;
+    int i;
+    
+    printf("Enter the size of the first array: \n");
+    scanf("%d",&size_1);
+    for(i=0 ; i<size_1 ; i++)
+    {
+        printf("Enter the %d element of array_1 ",i+1);
+        scanf("%d",&array_1[i]);
+    }
+    
+    printf("Enter the size of the second array: \n");
+    scanf("%d",&size_2);
+    for(i=0 ; i<size_2 ; i++)
+    {
+        printf("Enter the %d element of array_2 ",i+1);
+        scanf("%d",&array_2[i]);
+    }
+    printarray(array_1,size_1);
+    printarray(array_2,size_2);
+    if(check_subset(array_1,array_2,size_1,size_2) == true)
+    {
+        printf("\nFound the numbers in the other array!!!!");
+    }
+    else
+    {
+        printf("\nThe numbers are not present in the other array");
+    }
+    return 0;
+}
